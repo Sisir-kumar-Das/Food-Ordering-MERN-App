@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
-import { FaEnvelope } from "../assets/icons";
+import { FaEnvelope, FaLock } from "../assets/icons";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
+  const [password, setPassword] = useState("");
+  const [consfirmPassword, setConsfirmPassword] = useState("");
   return (
     <div className=" w-screen h-screen relative overflow-hidden flex">
       {/*  BackGround Image */}
@@ -30,13 +33,41 @@ const Login = () => {
         {/**  Input Section */}
         <div className=" w-full flex flex-col justify-center items-center gap-6 px-4 md:px-12 py-4">
           <LoginInput
-            placeHolder={"Email"}
+            placeHolder={"Email Here"}
             icon={<FaEnvelope className=" text-xl text-textColor" />}
             inputState={userEmail}
             inputStateFunc={setUserEmail}
             type="email"
             isSignup={isSignUp}
           />
+          <LoginInput
+            placeHolder={"Password Here"}
+            icon={<FaLock className=" text-xl text-textColor" />}
+            inputState={password}
+            inputStateFunc={setPassword}
+            type="password"
+            isSignup={isSignUp}
+          />
+          {isSignUp && (
+            <LoginInput
+              placeHolder={"Confirm Password Here"}
+              icon={<FaLock className=" text-xl text-textColor" />}
+              inputState={consfirmPassword}
+              inputStateFunc={setConsfirmPassword}
+              type="password"
+              isSignup={isSignUp}
+            />
+          )}
+          {!isSignUp ? (
+            <p>
+              Doesn't have an account:{" "}
+              <motion.button whileTap={{ scale: 0.95 }}>
+                Create One
+              </motion.button>{" "}
+            </p>
+          ) : (
+            <p></p>
+          )}
         </div>
       </div>
     </div>
