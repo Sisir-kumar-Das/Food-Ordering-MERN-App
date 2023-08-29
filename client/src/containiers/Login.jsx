@@ -3,6 +3,7 @@ import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
 import { FaEnvelope, FaLock } from "../assets/icons";
 import { motion } from "framer-motion";
+import { buttonCLick } from "../animations";
 
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -61,12 +62,25 @@ const Login = () => {
           {!isSignUp ? (
             <p>
               Doesn't have an account:{" "}
-              <motion.button whileTap={{ scale: 0.95 }}>
+              <motion.button
+                {...buttonCLick}
+                className=" text-red-600 underline cursor-pointer bg-transparent"
+                onClick={() => setIsSignUp(true)}
+              >
                 Create One
               </motion.button>{" "}
             </p>
           ) : (
-            <p></p>
+            <p>
+              ALready have an account:{" "}
+              <motion.button
+                {...buttonCLick}
+                className=" text-red-600 underline cursor-pointer bg-transparent"
+                onClick={() => setIsSignUp(false)}
+              >
+                Sign-in here
+              </motion.button>{" "}
+            </p>
           )}
         </div>
       </div>
