@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { LoginBg, Logo } from "../assets";
 import { LoginInput } from "../components";
-import { FaEnvelope, FaLock } from "../assets/icons";
+import { FaEnvelope, FaLock, FcGoogle } from "../assets/icons";
 import { motion } from "framer-motion";
 import { buttonCLick } from "../animations";
 
@@ -29,7 +29,9 @@ const Login = () => {
           Welcome Back
         </p>
         <p className=" text-xl text-textColor -mt-6">
-          Sign in with the following
+          {isSignUp
+            ? "Sign Up with the following"
+            : "Sign In with the following"}
         </p>
         {/**  Input Section */}
         <div className=" w-full flex flex-col justify-center items-center gap-6 px-4 md:px-12 py-4">
@@ -40,6 +42,7 @@ const Login = () => {
             inputStateFunc={setUserEmail}
             type="email"
             isSignup={isSignUp}
+            id="email"
           />
           <LoginInput
             placeHolder={"Password Here"}
@@ -48,6 +51,7 @@ const Login = () => {
             inputStateFunc={setPassword}
             type="password"
             isSignup={isSignUp}
+            id="pass"
           />
           {isSignUp && (
             <LoginInput
@@ -57,6 +61,7 @@ const Login = () => {
               inputStateFunc={setConsfirmPassword}
               type="password"
               isSignup={isSignUp}
+              id="con_pass"
             />
           )}
           {!isSignUp ? (
@@ -82,7 +87,30 @@ const Login = () => {
               </motion.button>{" "}
             </p>
           )}
+
+          <motion.button
+            {...buttonCLick}
+            className=" w-full px-4 py-2  rounded-xl bg-red-400 cursor-pointer text-white text-xl capitalize hover:bg-red-500 transition-all duration-150"
+          >
+            {isSignUp ? "Sign Up" : "Sign in"}
+          </motion.button>
         </div>
+
+        <div className="flex items-center justify-between gap-16">
+          <div className=" w-24 h-[1px] rounded-md bg-white"></div>
+          <p className=" text-white">or</p>
+          <div className=" w-24 h-[1px] rounded-md bg-white"></div>
+        </div>
+
+        <motion.div
+          {...buttonCLick}
+          className=" flex items-center justify-center px-20 py-2 bg-lightOverlay backdrop-blur-md cursor-pointer rounded-3xl gap-4"
+        >
+          <FcGoogle />
+          <p className="capitalize text-base text-headingColor">
+            Signin with Google
+          </p>
+        </motion.div>
       </div>
     </div>
   );
