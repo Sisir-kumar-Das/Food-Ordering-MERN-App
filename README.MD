@@ -1,7 +1,7 @@
 > Fullstack Food Delivery Application using Reactjs
 > This application is a simple Food Delivery application for the Learning purposes
 
-![This is the project Thumbnail](./snap.png)
+![This is the project Thumbnail](./Food_App.png)
 
 # To check the node version
 
