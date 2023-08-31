@@ -110,7 +110,6 @@ const Login = () => {
           <p className="capitalize text-base text-headingColor">
             Signin with Google
           </p>
-          <div></div>
         </motion.div>
       </div>
     </div>
